@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚠️ URL bị chặn</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      width: 100%;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .icon svg {
+      width: 48px;
+      height: 48px;
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    h1 {
+      color: #1f2937;
+      font-size: 32px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      font-size: 16px;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .url-box {
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+      word-break: break-all;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #dc2626;
+    }
+
+    .warning-info {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .warning-title {
+      font-weight: 600;
+      color: #991b1b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .warning-list {
+      color: #7f1d1d;
+      font-size: 14px;
+      line-height: 1.8;
+      list-style-position: inside;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: #f3f4f6;
+      color: #374151;
+      border: 1px solid #e5e7eb;
+    }
+
+    .btn-secondary:hover {
+      background: #e5e7eb;
+    }
+
+    .btn-danger {
+      background: transparent;
+      color: #dc2626;
+      border: 1px solid #dc2626;
+    }
+
+    .btn-danger:hover {
+      background: #dc2626;
+      color: white;
+    }
+
+    .confidence {
+      display: inline-block;
+      background: #fef2f2;
+      color: #dc2626;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+        <line x1="12" y1="9" x2="12" y2="13"></line>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+    </div>
+
+    <h1>⚠️ URL bị chặn</h1>
+    <p class="subtitle">
+      Trang web này đã được hệ thống phát hiện là có khả năng độc hại.<br>
+      Chúng tôi đã chặn truy cập để bảo vệ bạn.
+    </p>
+
+    <div class="url-box" id="blocked-url">
+      Đang tải...
+    </div>
+
+    <div class="warning-info">
+      <div class="warning-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        Cảnh báo an toàn
+      </div>
+      <ul class="warning-list">
+        <li>URL này có thể chứa malware hoặc phishing</li>
+        <li>Không nhập thông tin cá nhân hoặc tài chính</li>
+        <li>Không tải xuống bất kỳ file nào từ trang này</li>
+        <li>Liên hệ quản trị viên nếu bạn tin đây là nhầm lẫn</li>
+      </ul>
+    </div>
+
+    <div class="confidence" id="confidence-badge">
+      Độ tin cậy: Đang tính...
+    </div>
+
+    <div class="buttons" style="margin-top: 32px;">
+      <button class="btn btn-primary" onclick="goBack()">
+        ← Quay lại an toàn
+      </button>
+      <button class="btn btn-secondary" onclick="goHome()">
+        🏠 Về trang chủ
+      </button>
+      <button class="btn btn-danger" onclick="proceedAnyway()">
+        Tiếp tục (không khuyến nghị)
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Lấy URL từ query params
+    const urlParams = new URLSearchParams(window.location.search);
+    const blockedUrl = urlParams.get('url');
+    const confidence = urlParams.get('confidence');
+
+    // Hiển thị URL bị chặn
+    if (blockedUrl) {
+      document.getElementById('blocked-url').textContent = decodeURIComponent(blockedUrl);
+    }
+
+    // Hiển thị độ tin cậy
+    if (confidence) {
+      const confidencePercent = (parseFloat(confidence) * 100).toFixed(1);
+      document.getElementById('confidence-badge').textContent =
+        `Độ tin cậy: ${confidencePercent}%`;
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    function goHome() {
+      window.location.href = 'https://www.google.com';
+    }
+
+    function proceedAnyway() {
+      if (confirm('⚠️ CẢNH BÁO: Trang web này có thể gây hại cho thiết bị của bạn.\n\nBạn có chắc chắn muốn tiếp tục?')) {
+        if (blockedUrl) {
+          window.location.href = decodeURIComponent(blockedUrl);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
